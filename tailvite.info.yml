@@ -1,20 +1,19 @@
 name: Tailvite
 type: theme
 description: 'A Drupal base theme build with Vite, TailwindCSS & AlpineJS.'
-base theme: stable
+base theme: false
 core: 8.x
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 dependencies:
-  - drupal:components
-  - drupal:bamboo_twig
-  - drupal:bamboo_twig_loader
-  - drupal:bamboo_twig_token
-  - drupal:simplify_menu
+  - components:components
+  - bamboo_twig:bamboo_twig
+  - bamboo_twig:bamboo_twig_loader
+  - bamboo_twig:bamboo_twig_token
+  - simplify_menu:simplify_menu
+  - ex_icons:ex_icons
 
 libraries:
   - tailvite/global
-  - tailvite/hot-module-replacement
-  - tailvite/fontinter
 
 regions:
   header: Header
@@ -27,14 +26,14 @@ regions:
 components:
   namespaces:
     base:
-        - components/00-base
+      - components/00-base
     atoms:
-        - components/01-atoms
+      - components/01-atoms
     molecules:
-        - components/02-molecules
+      - components/02-molecules
     organisms:
-        - components/03-organisms
+      - components/03-organisms
     templates:
-        - components/04-templates
+      - components/04-templates
     pages:
-        - components/05-pages
+      - components/05-pages

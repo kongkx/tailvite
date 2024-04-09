@@ -361,6 +361,9 @@ function drush_tailvite_create($human_readable_name, $machine_name, $description
     return _tailvite_notify_fail('', 'Failed on Phase: Alter files.');
   }
 
+  // alter .gitignore
+  _tailvite_alter_gitignore($theme_path);
+
   // Phase: Rename files.
   $files_to_rename = _tailvite_get_files_to_rename();
   $files_to_rename_status = _tailvite_rename_files($theme_path, $machine_name, $files_to_rename);
@@ -475,20 +478,19 @@ function _tailvite_get_files_to_copy() {
   // Slim files and directories declaration.
   $default_array = array(
     '.browserslistrc',
-    '.editorconfig',
     '.eslintignore',
     '.eslintrc.yml',
     '.gitignore',
     '.npmrc',
     'lint-staged.config.js',
     'package.json',
-    'postcss.config.js',
-    'prettier.config.js',
+    'postcss.config.cjs',
+    'prettier.config.cjs',
     'tailvite.breakpoints.yml',
     'tailvite.info.yml',
     'tailvite.libraries.yml',
     'tailvite.theme',
-    'tailwind.config.js',
+    'tailwind.config.cjs',
     'vite.config.js',
   );
   // If we would like to have a bare copy we use is slim option.
@@ -501,7 +503,7 @@ function _tailvite_get_files_to_copy() {
     return array_merge($default_array, array(
       'components',
       'images',
-      'src',
+      'resources',
       'templates',
       'README.md',
       'screenshot.png',
@@ -584,6 +586,16 @@ function _tailvite_alter_files($theme_path, array $files_to_alter = array(), arr
 
   // If we make it here return success.
   return TRUE;
+}
+
+/**
+ * Alter .gitignore. un ignore `dist` folder
+ *
+ * @param [type] $theme_path
+ * @return void
+ */
+function _tailvite_alter_gitignore($theme_path)  {
+  // TODO: may remove `dist` ignore.
 }
 
 /**
